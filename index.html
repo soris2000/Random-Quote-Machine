@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Quote Machine</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const quotes = [
+        {
+          text: "Genius is one percent inspiration and ninety-nine percent perspiration.",
+          author: "Thomas Edison",
+        },
+        {
+          text: "You can observe a lot just by watching.",
+          author: "Yogi Berra",
+        },
+        {
+          text: "A house divided against itself cannot stand.",
+          author: "Abraham Lincoln",
+        },
+        {
+          text: "Difficulties increase the nearer we get to the goal.",
+          author: "Johann Wolfgang von Goethe",
+        },
+        {
+          text: "Fate is in your hands and no one elses",
+          author: "Byron Pulsifer",
+        },
+        {
+          text: "Be the chief but never the lord.",
+          author: "Lao Tzu",
+        },
+        {
+          text: "Nothing happens unless first we dream.",
+          author: "Carl Sandburg",
+        },
+        {
+          text: "Well begun is half done.",
+          author: "Aristotle",
+        },
+        {
+          text: "Life is a learning experience, only if you learn.",
+          author: "Yogi Berra",
+        },
+        {
+          text: "Self-complacency is fatal to progress.",
+          author: "Margaret Sangster",
+        },
+        {
+          text: "Peace comes from within. Do not seek it without.",
+          author: "Buddha",
+        },
+        {
+          text: "What you give is what you get.",
+          author: "Byron Pulsifer",
+        },
+        {
+          text: "We can only learn to love by loving.",
+          author: "Iris Murdoch",
+        },
+        {
+          text: "Life is change. Growth is optional. Choose wisely.",
+          author: "Karen Clark",
+        },
+        {
+          text: "You'll see it when you believe it.",
+          author: "Wayne Dyer",
+        },
+
+        {
+          text: "To lead people walk behind them.",
+          author: "Lao Tzu",
+        },
+        {
+          text: "Having nothing, nothing can he lose.",
+          author: "William Shakespeare",
+        },
+        {
+          text: "Trouble is only opportunity in work clothes.",
+          author: "Henry J. Kaiser",
+        },
+        {
+          text: "A rolling stone gathers no moss.",
+          author: "Publilius Syrus",
+        },
+        {
+          text: "Ideas are the beginning points of all fortunes.",
+          author: "Napoleon Hill",
+        },
+        {
+          text: "Everything in life is luck.",
+          author: "Donald Trump",
+        },
+        {
+          text: "Doing nothing is better than being busy doing nothing.",
+          author: "Lao Tzu",
+        },
+        {
+          text: "Trust yourself. You know more than you think you do.",
+          author: "Benjamin Spock",
+        },
+        {
+          text: "Study the past, if you would divine the future.",
+          author: "Confucius",
+        },
+
+        {
+          text: "From error to error one discovers the entire truth.",
+          author: "Sigmund Freud",
+        },
+        {
+          text: "Well done is better than well said.",
+          author: "Benjamin Franklin",
+        },
+        {
+          text: "Bite off more than you can chew, then chew it.",
+          author: "Ella Williams",
+        },
+        {
+          text: "Work out your own salvation. Do not depend on others.",
+          author: "Buddha",
+        },
+        {
+          text: "One today is worth two tomorrows.",
+          author: "Benjamin Franklin",
+        },
+        {
+          text: "Once you choose hope, anythings possible.",
+          author: "Christopher Reeve",
+        },
+        {
+          text: "God always takes the simplest way.",
+          author: "Albert Einstein",
+        },
+        {
+          text: "One fails forward toward success.",
+          author: "Charles Kettering",
+        },
+
+        {
+          text: "Learning is a treasure that will follow its owner everywhere",
+          author: "Chinese proverb",
+        },
+        {
+          text: "Be as you wish to seem.",
+          author: "Socrates",
+        },
+        {
+          text: "The world is always in movement.",
+          author: "V. Naipaul",
+        },
+        {
+          text: "Never mistake activity for achievement.",
+          author: "John Wooden",
+        },
+      ];
+
+      const colors = [
+        "#16a085",
+        "#27ae60",
+        "#2c3e50",
+        "#f39c12",
+        "#e74c3c",
+        "#9b59b6",
+        "#FB6964",
+        "#342224",
+        "#472E32",
+        "#BDBB99",
+        "#77B1A9",
+        "#73A857",
+      ];
+
+      class RandomQuoteMachine extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            text: "If you're going through hell, keep going.",
+            author: "Winston Churchill",
+          };
+          this.newQuote = this.newQuote.bind(this);
+        }
+
+        newQuote() {
+          const randomIndex = Math.floor(Math.random() * 36);
+          this.setState({
+            text: quotes[randomIndex].text,
+            author: quotes[randomIndex].author,
+          });
+        }
+
+        render() {
+          
+
+          var color = Math.floor(Math.random() * colors.length);
+          let newStyle = {
+            color: colors[color],
+            textAlign: "right",
+          };
+
+          return (
+            <div
+              className="container-fluid m-0 "
+              style={{ backgroundColor: colors[color] }}
+            >
+              <div className="row m-0 vh-100  justify-content-center  align-items-center ">
+                <div
+                  id="quote-box"
+                  className="col-md-5 bg-white p-5 rounded-2 justify-content-end"
+                >
+                  <h2 id="text" style={newStyle}>
+                    ❝ {this.state.text}
+                  </h2>
+                  <p id="author" style={newStyle}>
+                    - {this.state.author}
+                  </p>
+
+                  <div class="d-flex justify-content-between pt-5 ">
+                    <a
+                      id="tweet-quote"
+                      href="twitter.com/intent/tweet"
+                      target="_blank"
+                    >
+                      <img
+                        style={{ width: "40px", height: "40px" }}
+                        src="https://www.freeiconspng.com/uploads/-van-nederland-elgie-gaat-haar-ontwikkeling-posten-op-twitter-24.png"
+                        alt="twitter-post"
+                      />
+                    </a>
+                    <button
+                      id="new-quote"
+                      style={{ color: "white", backgroundColor: colors[color] }}
+                      className="btn  mx-9"
+                      onClick={this.newQuote}
+                    >
+                      New Quote
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        }
+      }
+
+      function MyApp() {
+        return (
+          <div>
+            <RandomQuoteMachine />
+          </div>
+        );
+      }
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      root.render(<MyApp />);
+    </script>
+  </body>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</html>
